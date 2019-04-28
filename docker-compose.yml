@@ -6,7 +6,7 @@ services:
         ports:
             - 13306:3306
         volumes:
-            - /usr/local/var/mydocker/mysql:/usr/lib/mysql
+            - /usr/local/var/mydocker/mysql:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD=root
     jira:
