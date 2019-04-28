@@ -6,7 +6,7 @@ services:
         ports:
             - 13306:3306
         volumes:
-            - /usr/local/var/mydocker/mysql:/var/lib/mysql
+            - ./data/mysql:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD=root
     jira:
@@ -15,7 +15,7 @@ services:
         ports:
             - 18080:8080
         volumes:
-            - /usr/local/var/mydocker/jira:/var/atlassian/jira
+            - ./data/jira:/var/atlassian/jira
         links:
             - mysql:mysql
     conf:
@@ -25,6 +25,6 @@ services:
             - 18090:8090
             - 18091:8091
         volumes:
-            - /usr/local/var/mydocker/conf:/var/atlassian/confluence
+            - ./data/conf:/var/atlassian/confluence
         links:
             - mysql:mysql
