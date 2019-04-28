@@ -1,0 +1,30 @@
+version: "3"
+services:
+    mysql:
+        image: mysql4jira
+        container_name: mysql
+        ports:
+            - 13306:3306
+        volumes:
+            - /usr/local/var/mydocker/mysql:/usr/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+    jira:
+        image: jira
+        container_name: jira
+        ports:
+            - 18080:8080
+        volumes:
+            - /usr/local/var/mydocker/jira:/var/atlassian/jira
+        links:
+            - mysql:mysql
+    conf:
+        image: conf
+        container_name: conf
+        ports:
+            - 18090:8090
+            - 18091:8091
+        volumes:
+            - /usr/local/var/mydocker/conf:/var/atlassian/confluence
+        links:
+            - mysql:mysql
